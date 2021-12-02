@@ -1,0 +1,19 @@
+<div class="todos">
+    <!-- {{ title }} -->
+    <form (submit) ="addTodo()">
+        <input 
+            type="text"
+            name="inputTodo"
+            placeholder="Type in what you need To Do ... and add them 1 by 1"
+            class="todo-input"
+            [(ngModel)]="inputTodo"
+        >
+        <button type="submit" class="todo-submit pointout" [disabled]="inputTodo === ''">ADD</button>
+    </form>
+    <h2 style="text-align: center;">Tip: Click any Task to strike-out and Reload to Clear the Entire List</h2>
+    <div *ngFor= "let todo of todos; let i= index;" class="todo {{ (todo.completed ? 'done' : '' ) }}">
+        <div class="id">{{ i + 1 }}</div>
+        <div class="content pointout" (click)="toggleDone(i)">{{ todo.content }}</div>
+        <button class="delete pointout" (click)="deleteTodo(i)"> x </button>
+    </div>
+</div>
